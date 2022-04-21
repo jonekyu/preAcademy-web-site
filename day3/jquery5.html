@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../table.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>카드뒤집기</title>
+    <style>
+        /* https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Animations/Using_CSS_animations */
+        /* #time {
+            margin:auto;
+            width:500px;
+            background-color: rgb(255, 251, 0);
+            height:40px;
+            animation-name: slidein;
+            animation-delay: 1s;
+            animation-duration: 60s;
+        }
+        @keyframes slidein {
+            from {
+                left: 100%;
+                width: 100%;
+                
+            }
+            to {
+                background-color: blue;
+                width: 0%;
+            }
+        }    */
+    </style>
+</head>
+<body>
+    <div id="page">
+        <table id="tbl">
+            <tr>
+                <td class="a">1</td>
+                <td class="b">2</td>
+                <td class="f">3</td>
+                <td class="i">4</td>
+                <td class="e">5</td>
+            </tr>
+            <tr>
+                <td class="k">6</td>
+                <td class="k">7</td>
+                <td class="j">8</td>
+                <td class="l">9</td>
+                <td class="e">10</td>
+            </tr>
+            <tr>
+                <td class="a">11</td>
+                <td class="f">12</td>
+                <td class="hide">13</td>
+                <td class="c">14</td>
+                <td class="c">15</td>
+            </tr>
+            <tr>
+                <td class="g">16</td>
+                <td class="b">17</td>
+                <td class="d">18</td>
+                <td class="g">19</td>
+                <td class="d">20</td>
+            </tr>
+            <tr>
+                <td class="h">21</td>
+                <td class="i">22</td>
+                <td class="h">23</td>
+                <td class="j">24</td>
+                <td class="l">25</td>
+            </tr>
+        </table>
+        <div id="bottom">
+            <button id="start">시작</button>
+            <div id="time"></div>
+            <div id="end" hidden>TIME OVER</div>
+        </div> -->
+
+        <div id="darken-background">
+            <div id="lightbox">
+                <div id="end">TIME OVER</div>
+                <div id="record"></div>
+                <button id="restart">재시작</button>
+            </div>
+        </div>
+    
+        
+    </div>
+</body>
+<script>
+    //1단계
+    // $("#tbl td").on("click", function(){
+    //     let no=$(this).attr("class");
+    //     alert(no);
+    // });
+
+    //2단계
+    // $("#tbl td").on("click", function(){
+    //     let no=$(this).attr("class");
+        
+    //     if(no=="a"){
+    //         $(this).css("background-color", "red");
+    //         // $(this).html("<img src='../image/과정평가형.jpg' height='100%' width='100%'/>");
+    //     }else if(no=="b"){
+    //         $(this).css("background-color", "orange");
+    //     }else if(no=="c"){
+    //         $(this).css("background-color", "yellow");
+    //     }else if(no=="d"){
+    //         $(this).css("background-color", "green");
+    //     }else if(no=="e"){
+    //         $(this).css("background-color", "blue");
+    //     }else if(no=="f"){
+    //         $(this).css("background-color", "purple");
+    //     }else if(no=="g"){
+    //         $(this).css("background-color", "gray");
+    //     }else if(no=="h"){
+    //         $(this).css("background-color", "pink");
+    //     }else if(no=="i"){
+    //         $(this).css("background-color", "brown");
+    //     }else if(no=="j"){
+    //         $(this).css("background-color", "black");
+    //     }else if(no=="k"){
+    //         $(this).css("background-color", "hotpink");
+    //     }else if(no=="l"){
+    //         $(this).css("background-color", "navy");
+    //     }
+    // });
+
+    //3단계 안맞는카드 다시 뒤집기
+    // let numbers=[];
+    // $("#tbl td").on("click", function(){
+    //     let no=$(this).attr("class");
+        
+
+    //     if(no=="a"){
+    //         $(this).css("background-color", "red");
+    //         // $(this).html("<img src='../image/과정평가형.jpg' height='100%' width='100%'/>");
+    //     }else if(no=="b"){
+    //         $(this).css("background-color", "orange");
+    //     }else if(no=="c"){
+    //         $(this).css("background-color", "yellow");
+    //     }else if(no=="d"){
+    //         $(this).css("background-color", "green");
+    //     }else if(no=="e"){
+    //         $(this).css("background-color", "blue");
+    //     }else if(no=="f"){
+    //         $(this).css("background-color", "purple");
+    //     }else if(no=="g"){
+    //         $(this).css("background-color", "gray");
+    //     }else if(no=="h"){
+    //         $(this).css("background-color", "pink");
+    //     }else if(no=="i"){
+    //         $(this).css("background-color", "brown");
+    //     }else if(no=="j"){
+    //         $(this).css("background-color", "black");
+    //     }else if(no=="k"){
+    //         $(this).css("background-color", "hotpink");
+    //     }else if(no=="l"){
+    //         $(this).css("background-color", "navy");
+    //     }
+        
+    //     numbers.push(no);
+    //     if(numbers.length==2){
+    //         let no1=numbers[0];
+    //         let no2=numbers[1];
+            
+    //         if(no1!=no2){
+    //             $("."+no1).css("background-color", "white");
+    //             $("."+no2).css("background-color", "white");
+    //         }
+    //         numbers=[];
+    //     }
+    // });
+
+    //4단계-1 안맞는카드 다시 뒤집기(느리게)
+    // let numbers=[];
+    // $("#tbl td").on("click", function(){
+    //     let no=$(this).attr("class");
+        
+
+    //     if(no=="a"){
+    //         $(this).css("background-color", "red");
+    //         // $(this).html("<img src='../image/과정평가형.jpg' height='100%' width='100%'/>");
+    //     }else if(no=="b"){
+    //         $(this).css("background-color", "orange");
+    //     }else if(no=="c"){
+    //         $(this).css("background-color", "yellow");
+    //     }else if(no=="d"){
+    //         $(this).css("background-color", "green");
+    //     }else if(no=="e"){
+    //         $(this).css("background-color", "blue");
+    //     }else if(no=="f"){
+    //         $(this).css("background-color", "purple");
+    //     }else if(no=="g"){
+    //         $(this).css("background-color", "gray");
+    //     }else if(no=="h"){
+    //         $(this).css("background-color", "pink");
+    //     }else if(no=="i"){
+    //         $(this).css("background-color", "brown");
+    //     }else if(no=="j"){
+    //         $(this).css("background-color", "black");
+    //     }else if(no=="k"){
+    //         $(this).css("background-color", "hotpink");
+    //     }else if(no=="l"){
+    //         $(this).css("background-color", "skyblue");
+    //     }
+
+    //     numbers.push(no);
+    //     if(numbers.length==2){
+    //         let no1=numbers[0];
+    //         let no2=numbers[1];
+    //         if(no1!=no2){
+    //             $("."+no1).animate({
+    //                 fontSize: 'x-large'
+    //                 // width: '500px'
+    //             }, 300, function(){
+    //                 $("."+no1).css("background-color", "white");
+    //             });
+
+    //             $("."+no2).animate({
+    //                 fontSize: 'x-large'
+    //                 // width: '500px'
+    //             }, 300, function(){
+    //                 $("."+no2).css("background-color", "white");
+    //             });
+    //         }
+    //         numbers=[];
+    //     }
+    // });
+
+    //4단계-2 안맞는카드 다시 뒤집기(느리게)
+    // let numbers=[];
+    // $("#tbl td").on("click", function(){
+    //     let no=$(this).attr("class");
+        
+
+    //     if(no=="a"){
+    //         $(this).css("background-color", "red");
+    //         // $(this).html("<img src='../image/과정평가형.jpg' height='100%' width='100%'/>");
+    //     }else if(no=="b"){
+    //         $(this).css("background-color", "orange");
+    //     }else if(no=="c"){
+    //         $(this).css("background-color", "yellow");
+    //     }else if(no=="d"){
+    //         $(this).css("background-color", "green");
+    //     }else if(no=="e"){
+    //         $(this).css("background-color", "blue");
+    //     }else if(no=="f"){
+    //         $(this).css("background-color", "purple");
+    //     }else if(no=="g"){
+    //         $(this).css("background-color", "gray");
+    //     }else if(no=="h"){
+    //         $(this).css("background-color", "pink");
+    //     }else if(no=="i"){
+    //         $(this).css("background-color", "brown");
+    //     }else if(no=="j"){
+    //         $(this).css("background-color", "black");
+    //     }else if(no=="k"){
+    //         $(this).css("background-color", "hotpink");
+    //     }else if(no=="l"){
+    //         $(this).css("background-color", "navy");
+    //     }
+    //     numbers.push(no);
+    //     if(numbers.length==2){
+    //         let no1=numbers[0];
+    //         let no2=numbers[1];
+    //         if(no1!=no2){
+    //             setTimeout(function() {
+    //                 $("."+no1).css("background-color", "white").css("transition", "all 1s");
+    //                 $("."+no2).css("background-color", "white").css("transition", "all 1s");
+    //             }, 500);
+    //         }
+    //         numbers=[];
+    //     }
+    // });
+
+    //5단계 타이머
+    // $("#start,#restart").on("click", function(){
+    //     $("td").css("background-color", "white");
+    //     $("#start").hide();
+    //     $("#end").hide();
+    //     $("#time").css("width", "0%");
+    //     $("#bottom").css("background-color", "gray");
+    //     $("#time").show();
+    //     $("#darken-background").hide();
+        
+    //     timerBar();
+
+    //     let numbers=[];
+    //     $("#tbl td").on("click", function(){
+    //         let no=$(this).attr("class");
+            
+
+    //         if(no=="a"){
+    //             $(this).css("background-color", "red");
+    //             // $(this).html("<img src='../image/과정평가형.jpg' height='100%' width='100%'/>");
+    //         }else if(no=="b"){
+    //             $(this).css("background-color", "orange");
+    //         }else if(no=="c"){
+    //             $(this).css("background-color", "yellow");
+    //         }else if(no=="d"){
+    //             $(this).css("background-color", "green");
+    //         }else if(no=="e"){
+    //             $(this).css("background-color", "blue");
+    //         }else if(no=="f"){
+    //             $(this).css("background-color", "purple");
+    //         }else if(no=="g"){
+    //             $(this).css("background-color", "gray");
+    //         }else if(no=="h"){
+    //             $(this).css("background-color", "pink");
+    //         }else if(no=="i"){
+    //             $(this).css("background-color", "brown");
+    //         }else if(no=="j"){
+    //             $(this).css("background-color", "black");
+    //         }else if(no=="k"){
+    //             $(this).css("background-color", "hotpink");
+    //         }else if(no=="l"){
+    //             $(this).css("background-color", "skyblue");
+    //         }
+
+    //         numbers.push(no);
+    //         if(numbers.length==2){
+    //             let no1=numbers[0];
+    //             let no2=numbers[1];
+    //             if(no1!=no2){
+    //                 setTimeout(function(){
+    //                     $("."+no1).css("background-color", "white");
+    //                     $("."+no2).css("background-color", "white");
+    //                 },300);
+    //             }else{
+    //                 let check=false;
+    //                 $("td").each(function(){
+    //                     if($(this).css("background-color")=="rgb(255, 255, 255)"&&$(this).attr("class")!="hide"){
+    //                         check=true;
+    //                     }
+    //                 });
+                    
+    //                 if(check==false){
+    //                     $("td").css("background-color", "gold");
+    //                     $("#end").html("SUCCESS");
+    //                     $("#end").show();
+    //                     $("#darken-background").show();
+    //                 }
+    //             }
+    //             numbers=[];
+    //         }
+
+
+    //     });
+    // });
+
+    //5단계 타이머 응용
+    $("#start,#restart").on("click", function(){
+        $("td").css("background-color", "white");
+        $("#start").hide();
+        $("#end").hide();
+        $("#time").css("width", "0%");
+        $("#bottom").css("background-color", "gray");
+        $("#time").show();
+        $("#darken-background").hide();
+        
+        timerBar();
+
+        let numbers=[];
+        $("#tbl td").on("click", function(){
+            let no=$(this).attr("class");
+            
+
+            if(no=="a"){
+                $(this).css("background-color", "red");
+                // $(this).html("<img src='../image/과정평가형.jpg' height='100%' width='100%'/>");
+            }else if(no=="b"){
+                $(this).css("background-color", "orange");
+            }else if(no=="c"){
+                $(this).css("background-color", "yellow");
+            }else if(no=="d"){
+                $(this).css("background-color", "green");
+            }else if(no=="e"){
+                $(this).css("background-color", "blue");
+            }else if(no=="f"){
+                $(this).css("background-color", "purple");
+            }else if(no=="g"){
+                $(this).css("background-color", "gray");
+            }else if(no=="h"){
+                $(this).css("background-color", "pink");
+            }else if(no=="i"){
+                $(this).css("background-color", "brown");
+            }else if(no=="j"){
+                $(this).css("background-color", "black");
+            }else if(no=="k"){
+                $(this).css("background-color", "hotpink");
+            }else if(no=="l"){
+                $(this).css("background-color", "skyblue");
+            }
+
+            numbers.push(no);
+            if(numbers.length==2){
+                let no1=numbers[0];
+                let no2=numbers[1];
+                if(no1!=no2){
+                    setTimeout(function(){
+                        $("."+no1).css("background-color", "white");
+                        $("."+no2).css("background-color", "white");
+                    },300);
+                }else{
+                    let check=false;
+                    $("td").each(function(){
+                        if($(this).css("background-color")=="rgb(255, 255, 255)"&&$(this).attr("class")!="hide"){
+                            check=true;
+                        }
+                    });
+                    
+                    if(check==false){
+                        $("td").css("background-color", "gold");
+                        $("#end").html("SUCCESS");
+                        $("#end").show();
+                        $("#darken-background").show();
+                    }
+                }
+                numbers=[];
+            }
+        });
+    });
+    
+    let stop;
+    let time=5;
+    timer();
+    function timer(){
+        stop = setInterval(function(){
+            time--;
+            $("#record").html(time);
+            if(time==0){
+                clearInterval(stop);
+            }
+        }, 1000);
+    }
+
+    function timerBar(){
+        $("#time").animate({
+            width: '100%'
+        }, 5000, 'linear', function(){
+            $("#end").show();
+            $("#tbl td").off("click");
+            $("#time").hide();
+            $("#bottom").css("background-color", "white");
+            $("#darken-background").show();
+        });
+    }
+
+    
+   
+    
+    
+    
+</script>
+</html>

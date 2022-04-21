@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>별게임</title>
+    <link rel="stylesheet" href="../table.css"/>
+    <style>
+    </style>
+</head>
+<body>
+    <div id="page">
+        <table id="tbl">
+            <tr>
+                <td class="stone1">1</td>
+                <td class="stone1">2</td>
+                <td class="stone1">3</td>
+                <td class="stone1">4</td>
+                <td class="stone1">5</td>
+            </tr>
+            <tr>
+                <td class="stone3">6</td>
+                <td class="stone3">7</td>
+                <td class="stone3">8</td>
+                <td class="stone3">9</td>
+                <td class="stone3">10</td>
+            </tr>
+            <tr>
+                <td class="stone3">11</td>
+                <td class="stone3">12</td>
+                <td class="stone3">13</td>
+                <td class="stone3">14</td>
+                <td class="stone3">15</td>
+            </tr>
+            <tr>
+                <td class="stone3">16</td>
+                <td class="stone3">17</td>
+                <td class="stone3">18</td>
+                <td class="stone3">19</td>
+                <td class="stone3">20</td>
+            </tr>
+            <tr>
+                <td class="stone2">21</td>
+                <td class="stone2">22</td>
+                <td class="stone2">23</td>
+                <td class="stone2">24</td>
+                <td class="stone2">25</td>
+            </tr>
+        </table>
+    </div>
+    
+    
+</body>
+<script>
+    //1단계
+    let changeColor=[];
+    let changeStone=[];
+    $("#tbl td").on("click", function(){
+        
+        let background=$(this).css("background-color");
+        $(this).css("font-size", "xx-large");
+        // alert(background);
+        changeColor.push(background);
+        changeStone.push($(this));
+        if(changeColor.length==2){
+            let color1=changeColor[0];
+            let color2=changeColor[1];
+            let stone1=changeStone[0];
+            let stone2=changeStone[1];
+
+            stone2.css("background-color", color1).css("font-size", "x-large");
+            stone1.css("background-color", color2).css("font-size", "x-large");
+            changeColor=[];
+            changeStone=[];
+        }
+
+    });
+</script>
+</html>

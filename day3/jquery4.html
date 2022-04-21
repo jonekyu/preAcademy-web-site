@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../table.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>퍼즐맞추기</title>
+</head>
+<body>
+    <div id="page">
+        <table id="tbl">
+            <tr>
+                <td id="1">1</td>
+                <td id="2">2</td>
+                <td id="3">3</td>
+                <td id="4">4</td>
+                <td id="5">5</td>
+            </tr>
+            <tr>
+                <td id="6">6</td>
+                <td id="7">7</td>
+                <td id="8">8</td>
+                <td id="9">9</td>
+                <td id="10">10</td>
+            </tr>
+            <tr>
+                <td id="11">11</td>
+                <td id="12">12</td>
+                <td id="13">13</td>
+                <td id="14">14</td>
+                <td id="15">15</td>
+            </tr>
+            <tr>
+                <td id="16">16</td>
+                <td id="17">17</td>
+                <td id="18">18</td>
+                <td id="19">19</td>
+                <td id="20">20</td>
+            </tr>
+            <tr>
+                <td id="21">21</td>
+                <td id="22">22</td>
+                <td id="23">23</td>
+                <td id="24">24</td>
+                <td id="25">25</td>
+            </tr>
+            <tr>
+                <td style="visibility:hidden"></td>
+                <td style="visibility:hidden"></td>
+                <td style="visibility:hidden"></td>
+                <td style="visibility:hidden"></td>
+                <td id="30"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+<script>
+    //1단계
+    // $("#tbl td").on("click", function(){
+    //     let html=$(this).html();
+    //     $("#tbl td").each(function(){
+    //         let check=$(this).html();
+    //         if(check==""){
+    //             $(this).html(html);
+    //         }
+    //     });
+    // });
+
+    //2단계
+    // $("#tbl td").on("click", function(){
+    //     let html=$(this).html();
+    //     $("#tbl td").each(function(){
+    //         let check=$(this).html();
+    //         if(check==""){
+    //             $(this).html(html);
+    //         }
+    //     });
+    //     $(this).html("");
+    // });
+
+    //3단계-1
+    $("#tbl td").on("click", function(){
+        let id=$(this).attr("id");
+        let html=$(this).html();
+        let id1=id%5;
+        if(id1>1){
+            
+            let check1=$("#"+(Number(id)+1)).html();
+            let check2=$("#"+(Number(id)-1)).html();
+            let check3=$("#"+(Number(id)+5)).html();
+            let check4=$("#"+(Number(id)-5)).html();
+
+
+            if(check1==""||check2==""||check3==""||check4==""){
+                $("#tbl td").each(function(){
+                    let check=$(this).html();
+                    if(check==""){
+                        $(this).html(html);
+                    }
+                });
+                $(this).html("");
+            }
+        }else if(id1==1){
+            let check1=$("#"+(Number(id)+1)).html();
+            let check3=$("#"+(Number(id)+5)).html();
+            let check4=$("#"+(Number(id)-5)).html();
+            
+            if(check1==""||check3==""||check4==""){
+                $("#tbl td").each(function(){
+                    let check=$(this).html();
+                    if(check==""){
+                        $(this).html(html);
+                    }
+                });
+                $(this).html("");
+            }
+        }else if(id1==0){
+            let check2=$("#"+(Number(id)-1)).html();
+            let check3=$("#"+(Number(id)+5)).html();
+            let check4=$("#"+(Number(id)-5)).html();
+
+            if(check2==""||check3==""||check4==""){
+                $("#tbl td").each(function(){
+                    let check=$(this).html();
+                    if(check==""){
+                        $(this).html(html);
+                    }
+                });
+                $(this).html("");
+            }
+        }  
+    });
+
+    //3단계-2
+    // $("#tbl td").on("click", function(){
+    //     let id=$(this).attr("id");
+    //     let html=$(this).html();
+    //     let id1=id%5;
+    //     if(id1>1){
+            
+    //         let check1=$("#"+(Number(id)+1)).html();
+    //         let check2=$("#"+(Number(id)-1)).html();
+    //         let check3=$("#"+(Number(id)+5)).html();
+    //         let check4=$("#"+(Number(id)-5)).html();
+
+    //         if(check1==""){
+    //             $("#"+(Number(id)+1)).html(html);
+    //             $(this).html("");
+    //         }else if(check2==""){
+    //             $("#"+(Number(id)-1)).html(html);
+    //             $(this).html("");
+    //         }else if(check3==""){
+    //             $("#"+(Number(id)+5)).html(html);
+    //             $(this).html("");
+    //         }else if(check4==""){
+    //             $("#"+(Number(id)-5)).html(html);
+    //             $(this).html("");
+    //         }
+    //     }else if(id1==1){
+    //         let check1=$("#"+(Number(id)+1)).html();
+    //         let check3=$("#"+(Number(id)+5)).html();
+    //         let check4=$("#"+(Number(id)-5)).html();
+    //         if(check1==""){
+    //             $("#"+(Number(id)+1)).html(html);
+    //             $(this).html("");
+    //         }else if(check3==""){
+    //             $("#"+(Number(id)+5)).html(html);
+    //             $(this).html("");
+    //         }else if(check4==""){
+    //             $("#"+(Number(id)-5)).html(html);
+    //             $(this).html("");
+    //         }
+    //     }else if(id1==0){
+    //         let check2=$("#"+(Number(id)-1)).html();
+    //         let check3=$("#"+(Number(id)+5)).html();
+    //         let check4=$("#"+(Number(id)-5)).html();
+    //         if(check2==""){
+    //             $("#"+(Number(id)-1)).html(html);
+    //             $(this).html("");
+    //         }else if(check3==""){
+    //             $("#"+(Number(id)+5)).html(html);
+    //             $(this).html("");
+    //         }else if(check4==""){
+    //             $("#"+(Number(id)-5)).html(html);
+    //             $(this).html("");
+    //         }
+    //     }  
+    // });
+
+    
+    
+</script>
+</html>
