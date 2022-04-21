@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>빙고</title>
+    <!-- <link rel="stylesheet" href="../table.css"/> -->
+    <style>
+        #page{
+            overflow: hidden;
+        }
+        #tbl{
+            margin:auto;
+        }
+        #tbl td{
+            width:100px;
+            height:100px;
+            font-size:x-large;
+            border:5px solid rgb(230, 104, 104);
+            text-align: center;
+            background-color:white;
+        }
+    </style>
+</head>
+<body>
+    <div id="page">
+        <table id="tbl">
+            <tr>
+                <td id="1">1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+            </tr>
+        </table>
+    
+        <div id="result">
+            <h2></h2>
+            <h1></h1>
+            <!-- <button id="backButton" style="float:right">뒤로</button> -->
+        </div>
+    </div>
+    
+    
+</body>
+<script>
+    //1단계 눌렀을때 배경색 변경
+    // $("#tbl td").on("click", function(){
+    //     $(this).css("background", "blue").css("color", "white");
+    // });
+
+
+    //2단계 변경된 배경색 다시변경
+    $("#tbl td").on("click", function(){
+        let background=$(this).css("background-color");
+        
+        if(background=="rgb(0, 0, 255)"){
+            $(this).css("background", "white").css("color", "black");    
+        }else{
+            $(this).css("background", "blue").css("color", "white");
+        }
+    });
+
+    //----------배열----------
+
+    //3단계 누른숫자 더하기
+    // let numbers=[];
+
+    // $("#tbl td").on("click", function(){
+    //     let background=$(this).css("background-color");
+    //     let number=$(this).html();
+    //     let result=0;
+    //     $("#result h2").html("");
+
+    //     if(background=="rgb(0, 0, 255)"){
+    //         $(this).css("background", "white").css("color", "black");   
+    //     }else{
+    //         $(this).css("background", "blue").css("color", "white");
+    //         numbers.push(number);
+    //     }
+        
+    //     for(let i=0; i<numbers.length; i++){
+    //         $("#result h2").append(numbers[i]+"+");
+    //         result=result+Number(numbers[i]);
+    //     }
+    //     $("#result h1").html("="+result);
+    // });
+
+
+    //4단계 다시 안눌리게하기
+    // let numbers=[];
+    // let backNumber;
+
+    // $("#tbl td").on("click", function(){
+    //     let background=$(this).css("background-color");
+    //     let number=$(this).html();
+    //     backNumber=$(this);
+    //     let result=0;
+        
+
+    //     if(background=="rgb(0, 0, 255)"){
+    //         // $(this).css("background", "white").css("color", "black");
+    //     }else{
+    //         $("#result h2").html("");
+    //         $(this).css("background", "blue").css("color", "white");
+    //         numbers.push(number);
+
+    //         for(let i=0; i<numbers.length; i++){
+    //             $("#result h2").append(numbers[i]+"+");
+    //             result=result+Number(numbers[i]);
+    //         }
+    //         $("#result h1").html("="+result);
+    //     }
+        
+        
+    // });
+
+
+    //5단계 코인생성   1등은 모은 코인가져가기
+    // let numbers=[];
+
+    // $("#tbl td").on("click", function(){
+    //     let background=$(this).css("background-color");
+    //     let number=$(this).html();
+    //     backNumber=$(this);
+    //     let result=0;
+        
+
+    //     if(background=="rgb(0, 0, 255)"){
+    //         // $(this).css("background", "white").css("color", "black");
+    //     }else{
+    //         $("#result h2").html("");
+    //         $(this).css("background", "blue").css("color", "white");
+    //         // $(this).off("click");
+    //         numbers.push(number);
+    //         for(let i=0; i<numbers.length; i++){
+    //             $("#result h2").append(numbers[i]+"+");
+    //             result=result+Number(numbers[i]);
+    //         }
+    //         $("#result h1").html("="+result);
+
+    //         if(result%5==0){
+    //             $("#result").append("<div class='coin'>C</div>");
+    //             numbers=[];
+    //         }
+    //     }
+    // });
+
+    //5단계 배열빼기 뒤로
+    // $("#backButton").on("click", function(){
+    //     numbers.pop();
+        
+    //     backNumber.on("click", function(){
+    //         alert("zz");
+    //         $(this).css("background", "white").css("color", "black");
+    //     });
+    //     let result=0;
+    //     $("#result h2").html("");
+    //     for(let i=0; i<numbers.length; i++){
+    //         $("#result h2").append(numbers[i]+"+");
+    //         result=result+Number(numbers[i]);
+    //     }
+    //     $("#result h1").html("="+result);
+    // });
+ </script>
+
+</html>
